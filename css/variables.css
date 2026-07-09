@@ -1,0 +1,69 @@
+/* ============================================================
+   TeamJ Premium Presentation Engine — Design Tokens
+   기존 용호골목시장 제안서 팔레트를 그대로 토큰화.
+   프로젝트를 교체할 때는 이 파일의 값만 바꾸면 전체 톤이 바뀝니다.
+   ============================================================ */
+:root {
+  /* Color — Dark (cover / hero) */
+  --color-navy-900: #050b14;
+  --color-navy-800: #0b1a30;
+  --color-navy-700: #16294a;
+
+  /* Color — Light (content) */
+  --color-bg-light: #f9fbfd;
+  --color-ink: #1e2d42;
+  --color-ink-muted: #64778d;
+  --color-blue-accent: #2b4c7e;
+
+  /* Color — Accent */
+  --color-gold: #e5a93b;
+  --color-gold-soft: rgba(229, 169, 59, 0.15);
+  --color-white: #ffffff;
+
+  /* Surface */
+  --surface-card: #ffffff;
+  --surface-card-border: #e1e8ed;
+  --surface-overlay-dark: rgba(255, 255, 255, 0.05);
+
+  /* Typography */
+  --font-body: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  --font-display: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+
+  /* Fixed design canvas (PPT-precision 1920x1080, JS scales this to fit any screen incl. 4K) */
+  --stage-width: 1920px;
+  --stage-height: 1080px;
+
+  /* Spacing scale */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 64px;
+  --space-7: 96px;
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-decelerate: cubic-bezier(0, 0, 0.2, 1);
+  --duration-fast: 250ms;
+  --duration-base: 550ms;
+  --duration-slow: 850ms;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+
+  /* Z-index scale */
+  --z-bg: 1;
+  --z-content: 2;
+  --z-controls: 1000;
+}
+
+/* Reduced motion: shorten every duration to near-instant, engine reads this via matchMedia too */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 1ms;
+    --duration-base: 1ms;
+    --duration-slow: 1ms;
+  }
+}

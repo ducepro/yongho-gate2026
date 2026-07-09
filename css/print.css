@@ -1,0 +1,66 @@
+/* ============================================================
+   Print / A3 PDF mode
+   PresentationMode.enterPrintMode()가 <body class="mode-print">를 부여하면 적용.
+   브라우저의 "인쇄 → PDF로 저장"으로 A3 가로 방향 PDF를 뽑는 것을 전제로 함.
+   ============================================================ */
+
+body.mode-print {
+  overflow: visible !important;
+  background: var(--color-white);
+}
+
+body.mode-print #stage-viewport {
+  position: static;
+  width: auto;
+  height: auto;
+  display: block;
+  background: var(--color-white);
+}
+
+body.mode-print #stage {
+  width: 100%;
+  height: auto;
+  transform: none !important;
+  animation: none !important;
+}
+
+body.mode-print .slide {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  height: 297mm;   /* A3 landscape height when printed sideways: width 420mm x height 297mm */
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: none !important;
+  page-break-after: always;
+  break-after: page;
+}
+
+body.mode-print .slide:last-child {
+  page-break-after: auto;
+  break-after: auto;
+}
+
+body.mode-print .controls,
+body.mode-print .progress-dots {
+  display: none !important;
+}
+
+/* skeleton 로더는 인쇄에 불필요 */
+body.mode-print .media-frame::before { display: none !important; }
+body.mode-print .media-frame img { opacity: 1 !important; }
+
+@media print {
+  @page {
+    size: A3 landscape;
+    margin: 0;
+  }
+
+  html, body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .controls, .progress-dots { display: none !important; }
+}

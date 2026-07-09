@@ -1,0 +1,119 @@
+/* ============================================================
+   Template: COVER-FORMAL
+   행정 공문형 표지. 날짜/제안업체명/관리코드처럼 수시로 바뀌는 값이 있어서
+   이미지가 아닌 HTML/CSS로 구성 — content.js의 값만 바꾸면 즉시 반영된다.
+   인쇄(A3 PDF)는 print.css/PresentationMode가 별도로 제어하므로,
+   화면 표시는 A4 박스 없이 전체 화이트 배경 + 중앙 정렬로만 구성한다.
+   ============================================================ */
+.tpl-cover-formal {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  background: #ffffff;
+  position: relative;
+}
+
+.cover-formal__sheet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 640px;
+}
+
+.cover-formal__project-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: 1px;
+  margin-bottom: 56px;
+}
+
+.cover-formal__doc-title {
+  font-size: 72px;
+  font-weight: 800;
+  color: #1a1a1a;
+  letter-spacing: 32px;
+  white-space: nowrap;
+  margin-bottom: 56px;
+  /* 마지막 글자 뒤 여백을 letter-spacing만큼 보정해 시각적으로 중앙에 오도록 */
+  padding-right: 32px;
+}
+
+.cover-formal__date-box {
+  border: 1px solid #444;
+  border-radius: 2px;
+  padding: 12px 32px;
+  font-size: 19px;
+  color: #1a1a1a;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  margin-bottom: 72px;
+}
+
+.cover-formal__date-box .blank {
+  display: inline-block;
+  min-width: 1.6em;
+  border-bottom: 1px solid #999;
+  margin: 0 4px;
+}
+
+.cover-formal__company-row {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  max-width: 420px;
+  justify-content: center;
+}
+
+.cover-formal__company-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ececec;
+  border: 1px solid #444;
+  padding: 10px 16px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a1a;
+  white-space: nowrap;
+}
+
+.cover-formal__company-dash {
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  color: #444;
+  font-size: 16px;
+}
+
+.cover-formal__company-input {
+  flex: 1;
+  border: 1px solid #444;
+  min-width: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  font-size: 15px;
+  color: #1a1a1a;
+}
+
+.cover-formal__code {
+  position: absolute;
+  right: 5%;
+  bottom: 4%;
+  font-size: 12px;
+  color: #666;
+  letter-spacing: 0.5px;
+}
+
+.cover-formal__code .value {
+  display: inline-block;
+  min-width: 80px;
+  border-bottom: 1px solid #999;
+  margin-left: 6px;
+  color: #1a1a1a;
+}

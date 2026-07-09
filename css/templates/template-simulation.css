@@ -1,0 +1,104 @@
+/* ============================================================
+   Template: SIMULATION  (v2 — Story Flow 개편)
+   상단: Before/After 비교 슬라이더 (또는 단일 시뮬레이션 이미지)
+   하단: 3~4개 핵심 설명 카드 (재질/경관효과/상징성/제작성 등)
+   ============================================================ */
+.tpl-simulation {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  z-index: var(--z-content);
+  position: relative;
+  min-height: 0;
+}
+
+.tpl-simulation__compare {
+  position: relative;
+  flex: 0 0 62%;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  --reveal: 50;
+  cursor: ew-resize;
+  user-select: none;
+}
+
+/* Before/After 슬라이더가 아니라 단일 시뮬레이션 이미지만 쓸 때
+   (mode:'single' — simulation.js가 아예 다른 마크업을 렌더링하므로 여기선 슬롯만 정의) */
+.tpl-simulation__single-slot {
+  flex: 0 0 62%;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tpl-simulation__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.tpl-simulation__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tpl-simulation__media.is-after {
+  clip-path: inset(0 0 0 calc(var(--reveal) * 1%));
+}
+
+.tpl-simulation__handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--reveal) * 1%);
+  width: 3px;
+  background: var(--color-white);
+  transform: translateX(-50%);
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
+}
+
+.tpl-simulation__handle::after {
+  content: "⇔";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-white);
+  color: var(--color-blue-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+}
+
+.tpl-simulation__labels span {
+  position: absolute;
+  top: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: rgba(5, 11, 20, 0.55);
+  color: var(--color-white);
+}
+
+.tpl-simulation__labels .label-before { left: 20px; }
+.tpl-simulation__labels .label-after { right: 20px; }
+
+.tpl-simulation__cards {
+  flex: 1;
+  min-height: 0;
+}
+
+@media (max-width: 1024px) {
+  .tpl-simulation__cards .feature-grid { grid-template-columns: 1fr; }
+}

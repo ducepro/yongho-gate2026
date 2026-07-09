@@ -1,0 +1,188 @@
+/* ============================================================
+   Stage scaling architecture
+   - #stage-viewport: 실제 브라우저 창(100vw/100vh), 항상 검정 레터박스
+   - #stage: 디자인은 항상 1920x1080 고정 캔버스 기준으로 작업 (PPT와 동일 정밀도)
+             JS(StageScaler)가 transform:scale()로 화면 크기에 맞춰 확대/축소.
+             4K(3840x2160) 화면에서는 scale(2)가 되므로, 이미지도 2x/4K 원본을
+             함께 제공해야 화질 저하가 없음 (LazyImageLoader가 자동 선택).
+   ============================================================ */
+#stage-viewport {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--color-navy-900);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#stage {
+  position: relative;
+  width: var(--stage-width);
+  height: var(--stage-height);
+  flex-shrink: 0;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+/* Slide base */
+.slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 64px 88px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+
+  /* 기본 표시 상태: JS가 .active를 토글하기 전까지는 숨김 */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.slide.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+/* Themes (기존 유지) */
+.dark-theme {
+  background: linear-gradient(135deg, var(--color-navy-800) 0%, var(--color-navy-900) 100%);
+  color: var(--color-white);
+}
+
+.light-theme {
+  background-color: var(--color-bg-light);
+  color: var(--color-ink);
+}
+
+/* Slide header (기존 유지 + 토큰화) */
+.slide-header {
+  margin-bottom: var(--space-4);
+  position: relative;
+  z-index: var(--z-content);
+}
+
+.slide-number {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--color-gold);
+  display: block;
+  margin-bottom: 5px;
+}
+
+.slide-header h2 {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--color-ink);
+}
+
+.dark-theme .slide-header h2 {
+  color: var(--color-white);
+}
+
+.slide-subtitle {
+  font-size: 18px;
+  color: var(--color-ink-muted);
+  margin-top: 5px;
+}
+
+/* Background image asset layer (기존 유지) */
+.slide-bg-image {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 35%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.15;
+  z-index: var(--z-bg);
+}
+
+/* 완성된 슬라이드 이미지를 텍스트 없이 그대로 보여주는 템플릿(imageSlide) 전용 —
+   기본 패딩(64px 88px)을 없애고, 대신 아주 얇은 여백(1.5%)만 남겨 이미지가
+   가장자리에 완전히 붙지 않고 자연스럽게(약 96~97%) 보이도록 한다.
+   transform:scale, zoom, filter/backdrop-filter는 쓰지 않고 순수 box model(padding)만 사용 —
+   원본 PNG(2048×1152, 16:9) 화질이 그대로 유지된다. */
+.slide--fullbleed {
+  padding: 0;
+}
+
+.tpl-image-slide {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  padding: 1.5%;
+  box-sizing: border-box;
+}
+
+/* Presentation Controls */
+.controls {
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px 20px;
+  border-radius: 30px;
+  z-index: var(--z-controls);
+}
+
+.controls button {
+  background: none;
+  border: none;
+  color: var(--color-white);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: color 0.2s;
+}
+
+.controls button:hover,
+.controls button:focus-visible {
+  color: var(--color-gold);
+}
+
+.controls button:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+#page-indicator {
+  color: var(--color-white);
+  font-size: 14px;
+  font-weight: bold;
+  min-width: 48px;
+  text-align: center;
+}
+
+/* Progress dots (신규 — 슬라이드 총 개수/현재 위치를 한눈에) */
+.progress-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.progress-dots button {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.progress-dots button.is-current {
+  background: var(--color-gold);
+  width: 20px;
+  border-radius: 4px;
+}

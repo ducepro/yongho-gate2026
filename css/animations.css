@@ -1,0 +1,68 @@
+/* ============================================================
+   Transition system
+   각 슬라이드는 <section data-transition="fade|zoom"> 로 전환 방식을 지정.
+   TransitionController가 방향(다음/이전)에 따라 아래 클래스를 부여/제거함.
+   ============================================================ */
+
+.slide {
+  transition:
+    opacity var(--duration-base) var(--ease-standard),
+    transform var(--duration-base) var(--ease-standard),
+    visibility 0s linear var(--duration-base);
+}
+
+.slide.active {
+  transition:
+    opacity var(--duration-base) var(--ease-decelerate),
+    transform var(--duration-base) var(--ease-decelerate),
+    visibility 0s linear;
+}
+
+/* --- Fade (기본) --- */
+.slide[data-transition="fade"] {
+  transform: none;
+}
+
+/* --- Zoom --- */
+.slide[data-transition="zoom"] {
+  transform: scale(0.94);
+}
+
+.slide[data-transition="zoom"].active {
+  transform: scale(1);
+}
+
+/* 다음 슬라이드로 나갈 때(뒤로 남는 슬라이드가 살짝 확대되어 사라지는 느낌) */
+.slide[data-transition="zoom"].is-leaving-forward {
+  transform: scale(1.06);
+}
+
+.slide[data-transition="fade"].is-leaving-forward,
+.slide[data-transition="fade"].is-leaving-back {
+  transform: none;
+}
+
+.slide[data-transition="zoom"].is-leaving-back {
+  transform: scale(0.94);
+}
+
+/* Stage-level entrance (최초 로드 시 은은한 등장) */
+#stage {
+  animation: stage-intro var(--duration-slow) var(--ease-decelerate) both;
+}
+
+@keyframes stage-intro {
+  from { opacity: 0; transform: translateY(12px) scale(0.99); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #stage { animation: none; }
+  .slide, .slide.active { transition: opacity var(--duration-fast) linear; }
+  .slide[data-transition="zoom"],
+  .slide[data-transition="zoom"].active,
+  .slide[data-transition="zoom"].is-leaving-forward,
+  .slide[data-transition="zoom"].is-leaving-back {
+    transform: none;
+  }
+}

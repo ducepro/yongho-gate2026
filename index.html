@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>용호골목시장 게이트 리뉴얼 제안서</title>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/templates/template-design.css">
+    <link rel="stylesheet" href="css/templates/template-simulation.css">
+    <link rel="stylesheet" href="css/templates/template-dimension.css">
+    <link rel="stylesheet" href="css/templates/template-closing.css">
+    <link rel="stylesheet" href="css/templates/template-cover-formal.css">
+    <link rel="stylesheet" href="css/print.css">
+</head>
+<body>
+
+    <!-- 실제 화면(노트북/4K TV 등) -->
+    <div id="stage-viewport">
+        <!-- 1920x1080 고정 디자인 캔버스. main.js가 SLIDES 데이터로 이 안을 채운다 -->
+        <div id="stage"></div>
+    </div>
+
+    <!-- Presentation Controls -->
+    <div class="controls">
+        <button id="prev-btn" aria-label="이전 슬라이드">◀ Prev</button>
+        <div class="progress-dots" id="progress-dots"></div>
+        <span id="page-indicator">1 / 1</span>
+        <button id="next-btn" aria-label="다음 슬라이드">Next ▶</button>
+        <button id="fullscreen-btn" aria-label="전체화면 전환">⛶</button>
+        <button id="print-btn" aria-label="A3 PDF로 인쇄">🖨 PDF</button>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

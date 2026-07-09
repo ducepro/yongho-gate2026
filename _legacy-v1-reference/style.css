@@ -1,0 +1,349 @@
+/* Reset & Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    background-color: #111;
+    color: #333;
+    overflow: hidden;
+}
+
+/* Presentation Container */
+.presentation-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+/* Slide Base Setup */
+.slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    padding: 60px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-sizing: border-box;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Themes */
+.dark-theme {
+    background: linear-gradient(135deg, #0b1a30 0%, #050b14 100%);
+    color: #ffffff;
+}
+
+.light-theme {
+    background-color: #f9fbfd;
+    color: #1e2d42;
+}
+
+/* Header Styles */
+.slide-header {
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.slide-number {
+    font-size: 24px;
+    font-weight: bold;
+    color: #e5a93b;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.slide-header h2 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #1e2d42;
+}
+
+.dark-theme .slide-header h2 {
+    color: #ffffff;
+}
+
+.slide-subtitle {
+    font-size: 18px;
+    color: #64778d;
+    margin-top: 5px;
+}
+
+/* Slide 1: Cover Design */
+.cover-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 900px;
+}
+
+.subtitle {
+    color: #e5a93b;
+    font-size: 18px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.cover-content h1 {
+    font-size: 56px;
+    line-height: 1.2;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.tagline {
+    font-size: 20px;
+    color: #a0b2c6;
+    margin-bottom: 50px;
+}
+
+.core-values {
+    display: grid;
+    grid-template-columns: repeat(3, 1xl);
+    display: flex;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.value-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 3px solid #e5a93b;
+    min-width: 200px;
+}
+
+.value-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.value-item Strong {
+    display: block;
+    font-size: 18px;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.value-item span {
+    font-size: 14px;
+    color: #a0b2c6;
+}
+
+.cover-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+}
+
+.presenter {
+    font-size: 14px;
+    color: #a0b2c6;
+}
+
+.footer-badges {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-badges span {
+    font-size: 12px;
+    background: rgba(229, 169, 59, 0.15);
+    color: #e5a93b;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(229, 169, 59, 0.3);
+}
+
+/* Slide 2: Table of Contents */
+.toc-container {
+    display: flex;
+    gap: 50px;
+    flex: 1;
+}
+
+.toc-left, .toc-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.toc-section h3 {
+    font-size: 20px;
+    color: #2b4c7e;
+    border-bottom: 2px solid #2b4c7e;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+}
+
+.toc-section ul {
+    list-style: none;
+}
+
+.toc-section li {
+    font-size: 16px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.toc-section li span {
+    color: #e5a93b;
+    font-weight: bold;
+    margin-right: 15px;
+    font-size: 14px;
+}
+
+.lighthouse-svg {
+    width: 150px;
+    height: auto;
+    margin-top: 20px;
+    opacity: 0.8;
+}
+
+/* Slide 3: Grid Cards */
+.grid-4-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    z-index: 2;
+    position: relative;
+}
+
+.info-card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-top: 4px solid #2b4c7e;
+}
+
+.card-icon {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.info-card h3 {
+    font-size: 20px;
+    color: #1e2d42;
+    margin-bottom: 15px;
+}
+
+.info-card ul {
+    list-style: none;
+}
+
+.info-card li {
+    font-size: 14px;
+    color: #54667a;
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 12px;
+}
+
+.info-card li::before {
+    content: "•";
+    color: #e5a93b;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* Slide 4: Grid Columns */
+.grid-4-columns {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    z-index: 2;
+    position: relative;
+}
+
+.column-item {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #e1e8ed;
+}
+
+.col-icon {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.column-item h4 {
+    font-size: 18px;
+    color: #2b4c7e;
+    margin-bottom: 10px;
+}
+
+.column-item p {
+    font-size: 14px;
+    color: #54667a;
+    line-height: 1.5;
+}
+
+/* Background Image Asset styling */
+.slide-bg-image {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    z-index: 1;
+}
+
+/* Presentation Controls Controls */
+.controls {
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 30px;
+    z-index: 1000;
+}
+
+.controls button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: color 0.2s;
+}
+
+.controls button:hover {
+    color: #e5a93b;
+}
+
+#page-indicator {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+}

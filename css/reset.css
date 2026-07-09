@@ -1,0 +1,23 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-navy-900);
+  color: var(--color-ink);
+  overflow: hidden; /* 프레젠테이션 모드 기본값. print.css가 인쇄 시 해제 */
+  -webkit-font-smoothing: antialiased;
+}
+
+ul { list-style: none; }
+img { display: block; max-width: 100%; }
+button { font: inherit; }

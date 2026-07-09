@@ -1,0 +1,304 @@
+/* ============================================================
+   Reusable slide components
+   특정 슬라이드가 아니라 "요소" 단위 컴포넌트. 템플릿들이 조합해서 사용.
+   ============================================================ */
+
+/* --- Cover --- */
+.cover-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 900px;
+}
+
+.cover-content .subtitle {
+  color: var(--color-gold);
+  font-size: 18px;
+  letter-spacing: 3px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.cover-content h1 {
+  font-size: 56px;
+  line-height: 1.2;
+  font-weight: 800;
+  margin-bottom: var(--space-2);
+}
+
+.cover-content .tagline {
+  font-size: 20px;
+  color: #a0b2c6;
+  margin-bottom: var(--space-6);
+}
+
+.core-values {
+  display: flex;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.value-item {
+  background: var(--surface-overlay-dark);
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--color-gold);
+  min-width: 200px;
+}
+
+.value-icon { font-size: 24px; margin-bottom: 10px; }
+
+.value-item strong {
+  display: block;
+  font-size: 18px;
+  color: var(--color-white);
+  margin-bottom: 5px;
+}
+
+.value-item span { font-size: 14px; color: #a0b2c6; }
+
+.cover-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: var(--space-2);
+}
+
+.cover-footer .presenter { font-size: 14px; color: #a0b2c6; }
+
+.footer-badges { display: flex; gap: 15px; }
+
+.footer-badges span {
+  font-size: 12px;
+  background: var(--color-gold-soft);
+  color: var(--color-gold);
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(229, 169, 59, 0.3);
+}
+
+/* --- Table of Contents --- */
+.toc-container {
+  display: flex;
+  gap: var(--space-5);
+  flex: 1;
+}
+
+.toc-left, .toc-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.toc-section h3 {
+  font-size: 20px;
+  color: var(--color-blue-accent);
+  border-bottom: 2px solid var(--color-blue-accent);
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+.toc-section li {
+  font-size: 16px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.toc-section li span {
+  color: var(--color-gold);
+  font-weight: bold;
+  margin-right: 15px;
+  font-size: 14px;
+}
+
+.lighthouse-svg {
+  width: 150px;
+  height: auto;
+  margin-top: var(--space-2);
+  opacity: 0.8;
+}
+
+/* --- 4-card grid (사업개요 등) --- */
+.grid-4-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-2);
+  z-index: var(--z-content);
+  position: relative;
+}
+
+.info-card {
+  background: var(--surface-card);
+  padding: var(--space-3);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border-top: 4px solid var(--color-blue-accent);
+}
+
+.card-icon { font-size: 32px; margin-bottom: var(--space-2); }
+.info-card h3 { font-size: 20px; color: var(--color-ink); margin-bottom: var(--space-2); }
+
+.info-card li {
+  font-size: 14px;
+  color: #54667a;
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 12px;
+}
+
+.info-card li::before {
+  content: "•";
+  color: var(--color-gold);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+/* --- 4-column grid (추진 배경 등) --- */
+.grid-4-columns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+  z-index: var(--z-content);
+  position: relative;
+}
+
+.column-item {
+  background: rgba(255, 255, 255, 0.9);
+  padding: var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--surface-card-border);
+}
+
+.col-icon { font-size: 28px; margin-bottom: var(--space-2); }
+.column-item h4 { font-size: 18px; color: var(--color-blue-accent); margin-bottom: 10px; }
+.column-item p { font-size: 14px; color: #54667a; line-height: 1.5; }
+
+/* --- Media placeholder (Lazy Loading 대상 공통 스타일) --- */
+.media-frame {
+  position: relative;
+  overflow: hidden;
+  background: #f5f7fa;
+  border: 1px dashed #c9d4e0;
+  border-radius: var(--radius-sm);
+}
+
+.media-frame img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-standard);
+}
+
+.media-frame img.is-loaded { opacity: 1; }
+
+.media-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, #f5f7fa 30%, #fbfcfd 50%, #f5f7fa 70%);
+  background-size: 200% 100%;
+  animation: media-skeleton 1.4s ease-in-out infinite;
+}
+
+.media-frame:has(img.is-loaded)::before { display: none; }
+
+/* 이미지가 로드되면 점선 보더도 자연스럽게 사라짐 (실제 콘텐츠처럼 보이도록) */
+.media-frame:has(img.is-loaded) { border-style: solid; border-color: transparent; }
+
+@keyframes media-skeleton {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* --- 16:9 프레임 (원본이 16:9 슬라이드 이미지이므로 프레임도 16:9로 고정) ---
+   부모는 flex center로 감싸고, 이 박스는 aspect-ratio + max-height로 letterbox 처리.
+   이미지가 잘리지 않도록 object-fit:contain을 강제한다.
+   Before/After 비교 슬라이더(.tpl-simulation__media)는 기존 cover 방식을 유지하므로
+   이 클래스를 적용하지 않는다 — Design 비주얼 / Dimension 도면 / Simulation 단일모드 전용. */
+.is-16x9 {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.media-frame.is-16x9 img {
+  object-fit: contain;
+}
+
+/* --- Feature card (공통 설명 카드) ---
+   Design 템플릿의 Key Features, Simulation 템플릿의 하단 설명 카드가 공유하는
+   아이콘 없는 순수 텍스트 카드. 프로젝트마다 제목/설명만 바뀌면 되는 구조. */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.feature-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.feature-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+.feature-card {
+  background: rgba(43, 76, 126, 0.05);
+  border-left: 3px solid var(--color-blue-accent);
+  border-radius: 6px;
+  padding: 18px 18px 20px;
+}
+
+.dark-theme .feature-card {
+  background: var(--surface-overlay-dark);
+  border-left-color: var(--color-gold);
+}
+
+.feature-card__title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin-bottom: 6px;
+}
+
+.dark-theme .feature-card__title { color: var(--color-white); }
+
+.feature-card__desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--color-ink-muted);
+}
+
+.dark-theme .feature-card__desc { color: #a0b2c6; }
+
+/* --- Section block (Concept / Material / Summary 등 라벨+본문 단위) --- */
+.section-block { margin-bottom: var(--space-4); }
+.section-block:last-child { margin-bottom: 0; }
+
+.section-block__label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--color-gold);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.section-block__body {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--color-ink-muted);
+}
+
+.section-block__body.is-emphasis {
+  color: var(--color-ink);
+  font-weight: 500;
+  padding: 14px 16px;
+  background: rgba(229, 169, 59, 0.08);
+  border-radius: 6px;
+  border-left: 3px solid var(--color-gold);
+}
