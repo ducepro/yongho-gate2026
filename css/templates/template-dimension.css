@@ -116,6 +116,6 @@
   text-align: right;
 }
 
-@media (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
   .tpl-dimension { grid-template-columns: 1fr; }
 }

@@ -49,6 +49,6 @@
 
 .dark-theme .tpl-design__title { color: var(--color-white); }
 
-@media (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
   .tpl-design { grid-template-columns: 1fr; }
 }
