@@ -20,7 +20,7 @@ export function renderDimension(data) {
   el.className = 'tpl-dimension';
   el.innerHTML = `
     <div class="tpl-dimension__diagram-slot">
-      <div class="tpl-dimension__diagram is-16x9">
+<div class="tpl-dimension__diagram">
         <img
           data-src="${data.diagram.src}"
           ${data.diagram.srcset ? `data-srcset="${data.diagram.srcset}"` : ''}

@@ -3,10 +3,28 @@
    좌측: 도면 크게 표시 / 우측: 카테고리별 규격 그룹
    (규격 / 재질 / 제작 방식 / 구조 / LED 사양 등 — 프로젝트마다 그룹 구성이 달라질 수 있음)
    ============================================================ */
+/* [Dimension 전용] 슬라이드 12·15 제목만 15% 확대 + 굵기 700.
+   .slide-header h2는 전역 공유 스타일(layout.css)이라 직접 못 건드리고,
+   :has()로 .tpl-dimension을 가진 슬라이드에만 스코프해서 다른 18개 슬라이드는
+   전혀 영향받지 않게 한다. 번호 배지(.slide-number)는 대상에서 제외 — 그대로 유지. */
+/* [배포 전 버그 수정] 헤더가 왼쪽 여백 없이 화면 가장자리에 붙어있던 문제 —
+   Dimension 슬라이드 헤더에만 여백을 추가로 줘서 오른쪽으로 밀어줌 */
+.slide-header:has(+ .tpl-dimension) {
+  padding-left: 60px;
+}
+
+.slide-header:has(+ .tpl-dimension) h2 {
+  font-size: 53px; /* 슬라이드 14(이미지) 제목 크기 비율에 맞춰 재조정 */
+  font-weight: 700;
+}
+
+.slide-header:has(+ .tpl-dimension) .slide-number {
+  font-size: 60px; /* 번호도 슬라이드 14 비율에 맞춰 확대 (기존 "유지" 방침에서 변경) */
+}
 .tpl-dimension {
   flex: 1;
   display: grid;
-  grid-template-columns: 1.7fr 1fr;
+  grid-template-columns: 2.4fr 1fr; /* [Galaxy Tab 가독성] 1.7fr→2.4fr, 도면 폭 약 12% 확대 */
   gap: var(--space-4);
   z-index: var(--z-content);
   position: relative;
@@ -23,8 +41,15 @@
 
 .tpl-dimension__diagram {
   position: relative;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 3307 / 2339; /* 실제 도면 원본 비율(약 1.41:1). is-16x9(16:9) 강제 적용 시
+                                필러박스가 생겨 콜아웃 좌표가 어긋나는 문제가 있어 수정함 */
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0 auto;
   border-radius: var(--radius-sm);
-  background:
+    background:
     linear-gradient(rgba(43,76,126,0.08) 1px, transparent 1px) 0 0/24px 24px,
     linear-gradient(90deg, rgba(43,76,126,0.08) 1px, transparent 1px) 0 0/24px 24px,
     var(--color-bg-light);
@@ -42,16 +67,18 @@
 .tpl-dimension__callout {
   position: absolute;
   font-family: 'Consolas', 'SF Mono', monospace;
-  font-size: 12px;
+  font-size: 16px;   /* [Galaxy Tab 가독성] 12px → 16px, +33% */
+  font-weight: 700;
   color: var(--color-blue-accent);
   background: var(--color-white);
-  border: 1px solid var(--color-blue-accent);
-  padding: 2px 8px;
+  border: 2px solid var(--color-blue-accent);  /* 1px → 2px, 글씨 확대에 맞춰 약간 굵게 */
+  padding: 4px 10px;
   border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
   transform: translate(-50%, -50%);
   white-space: nowrap;
+  z-index: 3;
 }
-
 .tpl-dimension__specs {
   display: flex;
   flex-direction: column;

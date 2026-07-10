@@ -54,13 +54,17 @@ export const SLIDES = [
         src: 'assets/images/1x/gate1-blueprint.png',
         alt: 'Gate 1 구조 치수 도면',
       },
-      callouts: [
-        { x: 50, y: 8, label: '전체 높이 6,200mm' },
-        { x: 15, y: 50, label: '기둥 폭 450mm' },
-        { x: 85, y: 50, label: '기둥 폭 450mm' },
-        { x: 50, y: 92, label: '전체 폭 8,400mm' },
+callouts: [
+        // 치수 숫자만 확대 표시 — 재질/부자재 라벨(LED채널 등)은 원본에 이미 큰 배지로
+        // 충분히 legible해서 중복 표시하지 않음 (제이슨 QC 피드백 반영)
+        { x: 38, y: 6,  label: '5,000mm' },
+        { x: 58, y: 6,  label: '3,000mm' },
+        { x: 21, y: 17, label: '900mm' },
+        { x: 21, y: 45, label: '4,500mm' },
+        { x: 21, y: 77, label: '500mm' },
+        { x: 50, y: 85, label: '4,800mm' },
       ],
-      groups: [
+            groups: [
         { title: '규격', rows: [
           { label: '전체 높이', value: '6,200 mm' },
           { label: '전체 폭', value: '8,400 mm' },
@@ -103,13 +107,16 @@ export const SLIDES = [
         src: 'assets/images/1x/gate2-blueprint.png',
         alt: 'Gate 2 구조 치수 도면',
       },
-      callouts: [
-        { x: 50, y: 10, label: '전체 높이 4,800mm' },
-        { x: 20, y: 50, label: '기둥 폭 300mm' },
-        { x: 80, y: 50, label: '기둥 폭 300mm' },
-        { x: 50, y: 90, label: '전체 폭 5,600mm' },
+callouts: [
+        // 치수 숫자만 확대 표시 (Gate1과 동일한 선별 기준)
+        { x: 6,  y: 29, label: '4,500mm' },
+        { x: 95, y: 29, label: '4,500mm' },
+        { x: 22, y: 32, label: '2,400mm' },
+        { x: 3,  y: 44, label: '1,200mm' },
+        { x: 22, y: 57, label: '500mm' },
+        { x: 50, y: 70, label: '4,000mm' },
       ],
-      groups: [
+            groups: [
         { title: '규격', rows: [
           { label: '전체 높이', value: '4,800 mm' },
           { label: '전체 폭', value: '5,600 mm' },
