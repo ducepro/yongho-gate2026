@@ -71,9 +71,9 @@ callouts: [
           { label: '기둥 폭', value: '450 mm × 2' },
         ]},
         { title: '재질', rows: [
-          { label: '주 구조재', value: '알루미늄 압출' },
-          { label: '패널', value: '강화유리 12T' },
-          { label: '마감', value: '분체도장 (화이트/블루)' },
+          { label: '주 구조재', value: '리얼 징크판넬' },
+          { label: '패널', value: '징크패널' },
+          { label: '마감', value: '분체도장' },
         ]},
         { title: '제작 방식', rows: [
           { label: '조립 방식', value: '모듈형 현장 조립' },
@@ -124,10 +124,10 @@ callouts: [
         ]},
         { title: '재질', rows: [
           { label: '주 구조재', value: '스틸 프레임' },
-          { label: '패널', value: '목재 루버 (오일스테인 마감)' },
+          { label: '패널', value: '징크패널' },
         ]},
         { title: '제작 방식', rows: [
-          { label: '조립 방식', value: '현장 용접 + 루버 조립' },
+          { label: '조립 방식', value: '현장 용접 + 조립' },
           { label: '공사 기간', value: '약 10일 (기초 제외)' },
         ]},
         { title: '구조', rows: [
