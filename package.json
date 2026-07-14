@@ -1,0 +1,24 @@
+{
+  "name": "yongho-gate2026",
+  "version": "1.0.0",
+  "description": "이번 프로젝트 하나만을 위한 웹이 아니라, **TeamJ의 모든 제안서(용호골목시장 / 경찰청 / 장미정원 / 철마 / 공원 / 조형물 등)가 공통으로 사용하는 프레젠테이션 엔진**입니다. PPT를 웹으로 \"옮기는\" 게 아니라, 웹에서 바로 \"제작\"하고 PPT는 출력(PDF) 용도로만 씁니다.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "export:ppt": "node export/engine/export-ppt.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ducepro/yongho-gate2026.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ducepro/yongho-gate2026/issues"
+  },
+  "homepage": "https://github.com/ducepro/yongho-gate2026#readme",
+  "dependencies": {
+    "pptxgenjs": "^4.0.1"
+  }
+}
